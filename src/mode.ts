@@ -11,6 +11,7 @@ export const clarityMode: ModeElementChange[] = [
       document.querySelector('#partial-discussion-header'),
       document.querySelector('.tabnav'),
       document.querySelector('.pr-toolbar'),
+      ...Array.from(document.querySelectorAll('.file-actions') as NodeListOf<HTMLElement>),
     ],
     edit: (element: HTMLElement) => {
       element.setAttribute('style', 'display: none !important;');
@@ -36,6 +37,18 @@ export const clarityMode: ModeElementChange[] = [
       element.removeAttribute('style');
     },
   },
+  {
+    elements: Array.from(document.querySelectorAll('.sticky-file-header') as NodeListOf<HTMLElement>),
+    edit: (element: HTMLElement) => {
+      element.setAttribute('style', `
+        position: relative;
+        top: 0;
+      `);
+    },
+    revert: (element: HTMLElement) => {
+      element.removeAttribute('style');
+    },
+  }
 ];
 
 export const activeClarityMode = () => {
