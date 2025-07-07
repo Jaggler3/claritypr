@@ -24,7 +24,7 @@ export const activeClarityMode = () => {
   const style = document.createElement('style');
   style.id = 'clarity-pr-style';
   style.textContent = `
-    header, footer, #partial-discussion-header, .tabnav, .file-actions {
+    header, footer, #partial-discussion-header, nav.tabnav, .file-actions {
       display: none !important;
     }
 
@@ -36,7 +36,8 @@ export const activeClarityMode = () => {
     #review-changes-modal {
       position: fixed;
       top: 50% !important;
-      transform: translateY(-50%) !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
     }
 
     body {
@@ -49,6 +50,7 @@ export const activeClarityMode = () => {
 
     #files {
       display: flex;
+      padding-left: 32px !important;
     }
 
     #repo-content-pjax-container > div {
@@ -88,6 +90,7 @@ export const activeClarityMode = () => {
       align-items: center;
       width: 100%;
       top: 0;
+      left: 0;
       padding: 0 20px;
       z-index: 1000;
     }
@@ -201,13 +204,15 @@ export const activeClarityMode = () => {
   }
 
   const changeCurrentFile = () => {
-    document.head.parentElement!.scrollLeft = window.innerWidth * currentFileIndex
+    document.head.parentElement!.scrollLeft = window.innerWidth * currentFileIndex + 32
     if (checkedFiles.has(currentFileIndex)) {
       checkButton!.setAttribute("style", "background: #238636")
     } else {
       checkButton!.removeAttribute("style")
     }
   }
+
+  changeCurrentFile()
 
   const showSubmitScreen = () => {
     // hide all .js-diff-progressive-container using opacity 0
