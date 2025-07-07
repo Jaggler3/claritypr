@@ -7,6 +7,7 @@ let isInSubmitScreen = false;
 setInterval(() => {
   // if we are in the submit screen, but the popover is not visible, show it
   const popover = document.querySelector("#review-changes-modal") as HTMLElement
+  if (!popover) return
   const popoverIsVisible = popover.checkVisibility()
   if ((isInSubmitScreen && !popoverIsVisible) || (!isInSubmitScreen && popoverIsVisible)) {
     toggleSubmitScreen()
