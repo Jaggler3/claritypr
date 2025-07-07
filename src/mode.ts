@@ -265,6 +265,9 @@ export const activeClarityMode = () => {
 }
 
 export const revertClarityMode = () => {
+  if (!isInClarityMode) return
+  isInClarityMode = false;
+
   // remove modified styles from existing classes
   const style = document.getElementById('clarity-pr-style');
   if (style) {
