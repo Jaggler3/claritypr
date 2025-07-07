@@ -4,7 +4,6 @@ module.exports = {
   mode: 'development',
   entry: {
     content: './src/content.ts',
-    popup: './src/popup.ts'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
