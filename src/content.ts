@@ -1,4 +1,4 @@
-import { activeClarityMode, revertClarityMode } from "./mode";
+import { activeClarityMode } from "./mode";
 
 // GitHub uses client-side routing, so we need to observe for navigation changes
 let currentUrl = window.location.href;
@@ -23,8 +23,6 @@ if (document.readyState === 'loading') {
   load();
 }
 
-var isClarityPR = false;
-
 function load() {
   //-- create activation button --
   const buttonContainer = document.querySelector('.pr-review-tools');
@@ -44,11 +42,6 @@ function load() {
   if (!button) return;
   buttonContainer.appendChild(button);
   button.addEventListener('click', () => {
-    isClarityPR = !isClarityPR;
-    if (isClarityPR) {
-      activeClarityMode();
-    } else {
-      revertClarityMode();
-    }
+    activeClarityMode();
   });
 }

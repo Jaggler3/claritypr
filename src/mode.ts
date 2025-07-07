@@ -4,7 +4,9 @@ const toggleSubmitScreen = () => {
 }
 
 let isInSubmitScreen = false;
+let isInClarityMode = false;
 setInterval(() => {
+  if (!isInClarityMode) return
   // if we are in the submit screen, but the popover is not visible, show it
   const popover = document.querySelector("#review-changes-modal") as HTMLElement
   if (!popover) return
@@ -15,6 +17,9 @@ setInterval(() => {
 }, 100);
 
 export const activeClarityMode = () => {
+  if (isInClarityMode) return
+  isInClarityMode = true;
+
   // add modified styles to existing classes
   const style = document.createElement('style');
   style.id = 'clarity-pr-style';
